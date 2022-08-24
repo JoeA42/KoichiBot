@@ -30,7 +30,7 @@
 
 ---
 
-## 🎨Design Patterns
-- :👁️: [Base Pattern](https://refactoring.guru/design-patterns/proxy)
-- :🧿: [Base Implementation](https://rednafi.github.io/digressions/python/2020/06/16/python-proxy-pattern.html)
+## 2. 🎨Design Patterns
+- :👁️: [Base Pattern](https://refactoring.guru/design-patterns/proxy) based pattern to add a layer of security
+- :🧿: [Base Implementation](https://rednafi.github.io/digressions/python/2020/06/16/python-proxy-pattern.html) implementation used as guide
 
