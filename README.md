@@ -3,11 +3,11 @@
 
 ---
 
-### baseline documents/folders
+### 🧢 baseline documents/folders
 
-> - bot.py: Change this ***file*** and add here the code for your bot.
-> - resources: Add into this ***folder*** files to be used with your bot such as images, spreadsheets and etc. 
-> - VERSION: Change the content of this ***file*** when updating the version of your bot. It is recommended to use versions in the format X.Y. E.g. 1.0, 1.1, 2.5, 3.10.
+> - 📄 bot.py: Change this ***file*** and add here the code for your bot.
+> - 📁 resources: Add into this ***folder*** files to be used with your bot such as images, spreadsheets and etc. 
+> - 📄 VERSION: Change the content of this ***file*** when updating the version of your bot. It is recommended to use versions in the format X.Y. E.g. 1.0, 1.1, 2.5, 3.10.
 
 ### baseline naming scheme
 > ## ROOT FOLDER ️🌳
