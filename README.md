@@ -10,6 +10,7 @@
 > - VERSION: Change the content of this ***file*** when updating the version of your bot. It is recommended to use versions in the format X.Y. E.g. 1.0, 1.1, 2.5, 3.10.
 
 ### baseline naming scheme
+> ## ROOT FOLDER
 > - ├── MANIFEST.in       <- This ***file*** defines the content of the package such as images.
 > - ├── README.md         <- Simple README ***file*** for your bot project. 
 > - ├── VERSION           <- This ***file*** defines the Bot package version.
