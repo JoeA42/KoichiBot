@@ -11,6 +11,8 @@ class Bot:
 
         pass
 
+    def main(self):
+        pass
 
 
 class DesktopBot(Bot):
