@@ -1,9 +1,16 @@
 # Change this file and add here the code for your bot.
 # "Main" python file for bot code
+from src.botPython.__main__ import print_hi
 
-class Bot(bType):
-    def __init__(self):
+
+class Bot:
+    def __init__(self, bType=None):
         self.botType = bType
+        if __name__ == 'bot':
+            print(f'Running {bType}')
+
+        pass
+
 
 
 class DesktopBot(Bot):

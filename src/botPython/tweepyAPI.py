@@ -1,4 +1,6 @@
 import tweepy
+from src.res import configModule
+
 
 
 class AuthPackage(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET):
@@ -15,6 +17,10 @@ class AuthPackage(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECR
         auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
         auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
+
+configModule
+
+AuthPackage().__init__()
 
 # Create API object
 api = tweepy.API(auth)
