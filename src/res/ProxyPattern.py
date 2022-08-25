@@ -40,18 +40,23 @@ class Proxy(Interface):
 
 
 class Gate:
-    def __init__(self, sLock) -> None:
-        self._klass = Gate(self)
+    def __init__(self, sLock, sStatus) -> None:
+        self._klass = Gate(self, sStatus)
         self.lock = sLock
+        self.status = sStatus
 
     def open_method(self) -> None:
         pass
 
+    def update_status(self, newStatus) -> String:
+        self._klass.status = newStatus
+
 
 class SecuredGate:
     def __init__(self) -> None:
-        self._klass = Gate("Secured")
+        self._klass = Gate('Secured', null)
         self.key = sKey
+        pass
 
     def open_method(self) -> None:
         print(f"Adding security measure to the method of {self._klass}")
@@ -62,5 +67,7 @@ if __name__ == "__main__":
     print(klass.job_a("red"))
     print(klass.job_b("nafi"))
 
-secured_door = SecuredDoor()
-secured_door.open_method()
+gate = Gate('General', 'unLocked')
+secured_gate = SecuredGate()
+secured_gate.updateStatus('Locked')
+secured_gate.open_method()
