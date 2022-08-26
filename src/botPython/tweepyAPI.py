@@ -1,7 +1,7 @@
 import tweepy
 from src.res.config import create_api
 
-print("TEST")
+print("TEST tweepyAPI.py")
 
 
 def create_tweet():
