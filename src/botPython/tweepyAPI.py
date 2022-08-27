@@ -4,14 +4,23 @@ import tweepy
 from tweepy import API
 
 from src.res.config import create_api
+from dotenv import load_dotenv
 
 print("TEST for tweepyAPI.py")
+load_dotenv()
 
 
 def create_tweet(message):
     # Authenticate to Twitter
-    auth = tweepy.OAuthHandler(os.getenv("CONSUMER_KEY"), os.getenv("CONSUMER_SECRET"))
-    auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_TOKEN_SECRET"))
+    consumer_key = os.getenv("CONSUMER_KEY")
+    consumer_secret = os.getenv("CONSUMER_SECRET")
+    print(consumer_key, consumer_secret)
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    print(auth)
+
+    key = os.getenv("ACCESS_TOKEN")
+    secret = os.getenv("ACCESS_TOKEN_SECRET")
+    auth.set_access_token(key, secret)
 
     # Create API object
     api = tweepy.API(auth)
