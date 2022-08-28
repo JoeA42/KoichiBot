@@ -1,4 +1,6 @@
 # created by virtualenv automatically
 venv/pyvenv.cfg
 .idea*
+.env
 venv
+/src/res/koichienv.sh
