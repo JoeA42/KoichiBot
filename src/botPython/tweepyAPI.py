@@ -1,29 +1,26 @@
 import os
 
 import tweepy
-from tweepy import API
-
-from src.res.config import create_api
 from dotenv import load_dotenv
+from tweepy import API
 
 print("TEST for tweepyAPI.py")
 load_dotenv()
 
+consumer_key = os.getenv("CONSUMER_KEY")
+consumer_secret = os.getenv("CONSUMER_SECRET")
+key = os.getenv("ACCESS_TOKEN")
+secret = os.getenv("ACCESS_TOKEN_SECRET")
+bearer_token = os.getenv("BEARER_TOKEN")
+
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+api = tweepy.API(auth)
+client = tweepy.Client(bearer_token, consumer_key, consumer_secret, key, secret)
+
 
 def create_tweet(message):
     # Authenticate to Twitter
-    consumer_key = os.getenv("CONSUMER_KEY")
-    consumer_secret = os.getenv("CONSUMER_SECRET")
-    print(consumer_key, consumer_secret)
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    print(auth)
-
-    key = os.getenv("ACCESS_TOKEN")
-    secret = os.getenv("ACCESS_TOKEN_SECRET")
     auth.set_access_token(key, secret)
-
-    # Create API object
-    api = tweepy.API(auth)
 
     # Create a tweet
     api.update_status(message)
@@ -32,23 +29,47 @@ def create_tweet(message):
 
 def create_direct_message():
     # Authenticate to Twitter
-    auth = tweepy.OAuthHandler("CONSUMER_KEY", "CONSUMER_SECRET")
-    auth.set_access_token("ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
-
-    # Create API object
-    api = tweepy.API(auth)
+    auth.set_access_token(key, secret)
 
     api.send_direct_message()
 
 
 def get_moots():
     # Authenticate to Twitter
-    auth = tweepy.OAuthHandler("CONSUMER_KEY", "CONSUMER_SECRET")
-    auth.set_access_token("ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
+    auth.set_access_token(key, secret)
 
     # Create API object
-    api = tweepy.API(auth)
-    API.get_friend_ids()
+    return API.get_friend_ids(api)
 
 
-create_tweet("Test for automated tweets")
+class TweetStream(tweepy.StreamingClient):
+
+    def on_tweet(self, tweet):
+        print(tweet.text)
+        try:
+            client.retweet(tweet.id)
+            client.like(tweet.id)
+        except Exception as error:
+            print(error)
+
+
+def get_tweets_by():
+    auth.set_access_token(key, secret)
+    tweets = api.mentions_timeline()
+    print(tweets[0].text)
+
+
+# get_tweets_by()
+# stream = TweetStream(bearer_token=bearer_token)
+# stream.delete_rules(1563671263444406272)
+# rule = tweepy.StreamRule(" from:GeorgeTakei ")
+# print(stream.get_rules())
+# stream.disconnect()
+# stream.add_rules(rule)
+# stream.filter()
+
+
+# def retweet_latest
+create_tweet("KoichiBot off (I'm tweeting "
+             "programmatically!)")
+# print(get_moots())
