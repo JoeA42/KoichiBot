@@ -61,7 +61,7 @@ def get_tweets_by():
 
 # get_tweets_by()
 # stream = TweetStream(bearer_token=bearer_token)
-# stream.delete_rules(1563671263444406272)
+# stream.delete_rules()
 # rule = tweepy.StreamRule(" from:GeorgeTakei ")
 # print(stream.get_rules())
 # stream.disconnect()
