@@ -1,4 +1,5 @@
 import os
+import time
 
 import tweepy
 from dotenv import load_dotenv
@@ -44,32 +45,41 @@ def get_moots():
 
 class TweetStream(tweepy.StreamingClient):
 
+    def on_connect(self):
+        print("Connected")
+
     def on_tweet(self, tweet):
         print(tweet.text)
-        try:
-            client.retweet(tweet.id)
-            client.like(tweet.id)
-        except Exception as error:
-            print(error)
+        time.sleep(0.2)
+        # try:
+        #     client.like(tweet.id)
+        #     client.retweet(tweet.id)
+        # except Exception as error:
+        #     print(error)
 
 
 def get_tweets_by():
     auth.set_access_token(key, secret)
-    tweets = api.mentions_timeline()
-    print(tweets[0].text)
+    tweets = api.home_timeline()
+    for tweet in tweets:
+        print(tweet.text)
+        client.like(tweet)
 
 
 # get_tweets_by()
 # stream = TweetStream(bearer_token=bearer_token)
-# stream.delete_rules()
-# rule = tweepy.StreamRule(" from:GeorgeTakei ")
+# stream.delete_rules(1563725008375091200)
+# rule = tweepy.StreamRule(" from:AlvarezKoichi #KoichiExplains ")
+# stream.add_rules(rule)
 # print(stream.get_rules())
 # stream.disconnect()
-# stream.add_rules(rule)
-# stream.filter()
-
+# stream.filter(tweet_fields=["referenced_tweets"])
 
 # def retweet_latest
-create_tweet("KoichiBot off (I'm tweeting "
-             "programmatically!)")
+create_tweet("KoichiBot off 🐱💤🛌🏾")
+# create_tweet("KoichiBot on 💻 dev mode (I'm tweeting programmatically!)")
+# create_tweet("KoichiBot on 📋 test mode (I'm tweeting "
+#              "programmatically!)")
+# create_tweet("KoichiBot on 🐱⏰🍵 (I'm tweeting "
+#              "programmatically!)")
 # print(get_moots())
